@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 function NewComponent()  {
     return (
         <Wrapper>
-            <h1>box - new component</h1>
+            <p>box - new component</p>
             <button>click me</button>
         </Wrapper>
     )

@@ -10,7 +10,7 @@ const HomePageStyled = styled.div`
 function HomePage() {
     return (
         <HomePageStyled>
-            <h1>Home Page</h1>
+            <p>Home Page</p>
             <NewComponent />
         </HomePageStyled>
     )
