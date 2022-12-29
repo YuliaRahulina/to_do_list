@@ -8,6 +8,7 @@ const ToDoStyled = styled.div`
     background-color: #f37df3;
     display: flex;
     align-items: center;
+    margin-bottom: 7px;
 `;
 
 const InputStyled = styled.input`
@@ -27,11 +28,11 @@ const Calendar = styled.div`
 `;
 
 
-function ToDo()  {
+function ToDo(props)  {
     return (
         <ToDoStyled>
             <InputStyled type="checkbox" />
-            <ToDoItemStyled />
+            <ToDoItemStyled>{props.taskName}</ToDoItemStyled>
             <Calendar/>
         </ToDoStyled>
     )

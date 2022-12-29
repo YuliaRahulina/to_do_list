@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components';
 
 import AddItem from '../components/AddItem';
@@ -22,13 +23,53 @@ const MainLabel = styled.h1`
     text-align: center;
 `;
 
+// const isDone = true
+// const taskName = "asdasd"
+
+// const myObject = {
+//     isDone: true,
+//     taskName: "my first task",
+//     date: "29.12.2022",
+//     randomValue: null
+// }
+
+// const test = [
+//     isDone,
+//     taskName,
+//     myObject.date // 29.12.2022
+// ]
+
+const defaultTodoList = [
+    {
+        isDone: true,
+        taskName: "my first task",
+        date: "29.12.2022"
+    },
+    {
+        isDone: true,
+        taskName: "поїхати в бар",
+        date: "29.12.2022"
+    },
+    {
+        isDone: true,
+        taskName: "випити чаю",
+        date: "29.12.2022"
+    }
+]
+
 function HomePage() {
+    const [todoList, updateTodoList] = React.useState(defaultTodoList);
     return (
         <HomePageStyled>
             <MainLabel>To do list</MainLabel>
             <AddItem />
             <Label>TO DO</Label>
-            <ToDo />
+            {/* <ToDo /> */}
+            {todoList.map(item => {
+                return (
+                    <ToDo taskName={item.taskName} />
+                )
+            })}
             <Label>COMPLETED</Label>
             <Completed />
         </HomePageStyled>
