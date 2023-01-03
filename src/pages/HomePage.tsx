@@ -40,30 +40,47 @@ const MainLabel = styled.h1`
 // ]
 
 const defaultTodoList = [
-    {
-        isDone: true,
-        taskName: "my first task",
-        date: "29.12.2022"
-    },
-    {
-        isDone: true,
-        taskName: "поїхати в бар",
-        date: "29.12.2022"
-    },
-    {
-        isDone: true,
-        taskName: "випити чаю",
-        date: "29.12.2022"
-    }
+    // {
+    //     isDone: true,
+    //     taskName: "my first task",
+    //     date: "29.12.2022"
+    // },
+    // {
+    //     isDone: true,
+    //     taskName: "поїхати в бар",
+    //     date: "29.12.2022"
+    // },
+    // {
+    //     isDone: true,
+    //     taskName: "випити чаю",
+    //     date: "29.12.2022"
+    // },
 ]
 
 function HomePage() {
     const [todoList, updateTodoList] = React.useState(defaultTodoList);
+
+    // const [counter, setCounter] = React.useState(10);
+
+    // function decrement() {
+    //     const result = counter - 1
+    //     setCounter(result)
+    // }
+
+    function addToDo (todo) {
+        // updateTodoList()
+        const newTodoList = [...todoList, { isDone: false, taskName: todo, data: "03.01.23" }]
+        updateTodoList(newTodoList)
+    }
+
+
     return (
         <HomePageStyled>
             <MainLabel>To do list</MainLabel>
-            <AddItem />
+            <AddItem onAdd={addToDo} icon="+" />
             <Label>TO DO</Label>
+            {/* <button onClick={decrement}>do decrement</button> */}
+            {/* <p>my counter: {counter}</p> */}
             {/* <ToDo /> */}
             {todoList.map(item => {
                 return (

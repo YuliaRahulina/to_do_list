@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const AddItemStyled = styled.div`
@@ -23,16 +24,35 @@ const InputStyled = styled.input`
 const ButtonStyled = styled.div`
     width: 28px;
     height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     background-color: wheat;
     border-radius:50px;
+    cursor: pointer;
 `;
 
 
-function AddItem()  {
+function AddItem(props)  {
+    const [text, updateText] = React.useState();
+
+    function onChangeInput(event) {
+        const text = event.target.value
+        updateText(text)
+    }
+
+    function createItem() {
+        props.onAdd(text)
+        updateText(" ")
+    }
+
     return (
         <AddItemStyled>
-            <InputStyled type="text" />
-            <ButtonStyled />
+            <InputStyled value={text} onChange={onChangeInput} type="text" />
+            <ButtonStyled onClick={createItem}>
+                {props.icon}
+            </ButtonStyled>
         </AddItemStyled>
     )
 }

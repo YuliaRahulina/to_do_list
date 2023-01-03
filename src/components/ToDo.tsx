@@ -27,7 +27,6 @@ const Calendar = styled.div`
     font-weight: bold;
 `;
 
-
 function ToDo(props)  {
     return (
         <ToDoStyled>
