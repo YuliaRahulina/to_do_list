@@ -2,54 +2,58 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AddItemStyled = styled.div`
-    width: 260px;
-    height: 35px;
-    border-radius: 10px;
-    margin-left: 20px;
-    background-color: #f37df3;
     display: flex;
     align-items: center;
+    gap: 15px;
+    height: 27px;
 `;
 
 const InputStyled = styled.input`
-    background-color: #f37df3;
-    border-radius: 10px;
-    color: wheat;
-    font-weight: bold;
-    border: 0px solid #f37df3;
-    outline: none;
-    width: 225px;
+    background-color: #fea1ee;
+    border: 3px solid #eb0bff;
+    border-radius: 7px;
+    width: 400px;
+    height: 27px;
 `;
 
 const ButtonStyled = styled.div`
     width: 28px;
-    height: 28px;
+    font-size: large;
+    color: #eb0bff;
+    font-weight: bold;
+    border: 2px solid #eb0bff;
+    background-color: #fea1ee;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 20px;
-    background-color: wheat;
-    border-radius:50px;
+    justify-content: center;
+    border-radius: 7px;
     cursor: pointer;
+    &:hover {
+        width: 29px;
+        border: 3px solid #eb0bff;
+        color: #eb0bff;
+        background-color: #fea1ee;
+    }
 `;
+
+
 
 
 function AddItem(props)  {
     const [text, updateText] = React.useState();
 
     function onChangeInput(event) {
-        const text = event.target.value
-        updateText(text)
-    }
+        updateText(event.target.value)
+    };
 
     function createItem() {
-        props.onAdd(text)
-        updateText(" ")
+        props.onAdd(text);
+        updateText('');
     }
 
     return (
         <AddItemStyled>
-            <InputStyled value={text} onChange={onChangeInput} type="text" />
+            <InputStyled placeholder={props.placeholderInput} value={text} onChange={onChangeInput} type="text" />
             <ButtonStyled onClick={createItem}>
                 {props.icon}
             </ButtonStyled>

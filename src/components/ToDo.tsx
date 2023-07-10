@@ -1,37 +1,57 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const ToDoStyled = styled.div`
-    width: 260px;
-    height: 45px;
-    border-radius: 10px;
-    margin-left: 20px;
-    background-color: #f37df3;
     display: flex;
+    gap: 15px;
     align-items: center;
-    margin-bottom: 7px;
+    height: 27px;
 `;
 
-const InputStyled = styled.input`
-    outline: none;
-    width: 45px;
+const ButtonStyled = styled.button`
+    width: 28px;
+    font-size: large;
+    color: #eb0bff;
+    font-weight: bold;
+    border: 2px solid #ff3131;
+    background-color: #fea1ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    cursor: pointer;
+    &:hover {
+        width: 29px;
+        border: 3px solid #38c038;
+        color: #38c038;
+        background-color: #a4eea4;
+    }
 `;
 
 const ToDoItemStyled = styled.div`
-    width: 200px;
-    color: wheat;
-    font-weight: bold;
+    background-color: #fea1ee;
+    border: 3px solid #ff3131;
+    border-radius: 7px;
+    width: 400px;
+    height: 27px;
 `;
 
 const Calendar = styled.div`
-    width: 35px;
-    font-weight: bold;
+    
 `;
 
 function ToDo(props)  {
+
+    function removeItem () {
+        props.onMove(props.toDoText);
+    };
+
     return (
         <ToDoStyled>
-            <InputStyled type="checkbox" />
-            <ToDoItemStyled>{props.taskName}</ToDoItemStyled>
+            <ToDoItemStyled>{props.toDoText}</ToDoItemStyled>
+            <ButtonStyled onClick={removeItem}>
+                {props.icon}
+            </ButtonStyled>
             <Calendar/>
         </ToDoStyled>
     )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 import AddItem from '../components/AddItem';
@@ -6,100 +6,173 @@ import Label from '../components/Label';
 import ToDo from '../components/ToDo';
 import Completed from '../components/Completed';
 
-const HomePageStyled = styled.p`
-    width: 300px;
-    height: 500px;
-    border: 1px solid wheat;
-    background-color: wheat;
-    margin: 25px;
-    border-radius: 10px;
+const HomePageStyled = styled.div`
+    width: 100%;
+    height: 100%;
+    border: 7px solid #eb0bff;
+    background-color: #f396fb;
+    padding: 25px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 `;
+
+const WholeToDoList = styled.div`
+    width: 500px;
+    height: 100%;
+    min-height: 100vh;
+    border: 3px solid #eb0bff;
+    background-color: #f284fc;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 3;
+`
+
+const Cat = styled.div`
+    position: absolute;
+    z-index: 2;
+    left: 115px;
+    bottom:110px;
+    img {
+        width: 145px;
+    }
+`
+
+const CatPaw = styled.div`
+    position: absolute;
+    z-index: 2;
+    right: 15px;
+    bottom: 10px;
+    img {
+        width: 95px;
+    }
+`
+
+const CatPawOne = styled.div`
+    position: absolute;
+    z-index: 2;
+    right: 125px;
+    bottom: 40px;
+    img {
+        width: 135px;
+    }
+`
+
+const CatPawTwo = styled.div`
+    position: absolute;
+    z-index: 2;
+    left: 95px;
+    bottom: 30px;
+    img {
+        width: 75px;
+    }
+`
+
+const CatPawThree = styled.div`
+    position: absolute;
+    z-index: 2;
+    left: 8px;
+    bottom: 10px;
+    img {
+        width: 105px;
+    }
+`
+
+const SandClock = styled.div`
+    position: absolute;
+    z-index: 2;
+    right: 120px;
+    top: 25px;
+    opacity: 0.4;
+    img {
+        width: 145px;
+    }
+`
 
 const MainLabel = styled.h1`
-    font-size: 25px;
-    color: #fe27fe;
+    font-size: 32px;
+    color: #8d019a;
     text-align: center;
+    font-style: italic;
 `;
 
-// const isDone = true
-// const taskName = "asdasd"
-
-// const myObject = {
-//     isDone: true,
-//     taskName: "my first task",
-//     date: "29.12.2022",
-//     randomValue: null
-// }
-
-// const test = [
-//     isDone,
-//     taskName,
-//     myObject.date // 29.12.2022
-// ]
-
-const defaultTodoList = [
-    // {
-    //     isDone: true,
-    //     taskName: "my first task",
-    //     date: "29.12.2022"
-    // },
-    // {
-    //     isDone: true,
-    //     taskName: "поїхати в бар",
-    //     date: "29.12.2022"
-    // },
-    // {
-    //     isDone: true,
-    //     taskName: "випити чаю",
-    //     date: "29.12.2022"
-    // },
-]
 
 function HomePage() {
-    const [todoList, updateTodoList] = React.useState(defaultTodoList);
+    const [toDoList, updateTodoList] = React.useState([]);
 
-    // const [counter, setCounter] = React.useState(10);
-
-    // function decrement() {
-    //     const result = counter - 1
-    //     setCounter(result)
-    // }
-
-    function addToDo (todo) {
-        // updateTodoList()
-        const newTodoList = [...todoList, { isDone: false, taskName: todo, data: "03.01.23" }]
+    function addToDo(text) {
+        const newTodoList = [...toDoList, text]
         updateTodoList(newTodoList)
     }
 
+    const [completedList, uptadeCompletedList] = React.useState([]);
+
+    function completedToDo(text) {
+        const indexCompleted = toDoList.indexOf(text)
+        const copyToDoList = [...toDoList]
+        copyToDoList.splice(indexCompleted, 1)
+        updateTodoList(copyToDoList)
+
+        const copyCompletedList = [...completedList]
+        copyCompletedList.push(text)
+        uptadeCompletedList(copyCompletedList)
+    };
+
+    function deleteItem(text) {
+        const indexCompleted = completedList.indexOf(text)
+        const copyCompletedList = [...completedList]
+        copyCompletedList.splice(indexCompleted, 1)
+        uptadeCompletedList(copyCompletedList)
+    };
 
     return (
         <HomePageStyled>
-            <MainLabel>To do list</MainLabel>
-            <AddItem onAdd={addToDo} icon="+" />
-            <Label>TO DO</Label>
-            {/* <button onClick={decrement}>do decrement</button> */}
-            {/* <p>my counter: {counter}</p> */}
-            {/* <ToDo /> */}
-            {todoList.map(item => {
-                return (
-                    <ToDo taskName={item.taskName} />
-                )
-            })}
-            <Label>COMPLETED</Label>
-            <Completed />
+            <Cat>
+                <img src="public/dlf.pt-cat-face-png-245887.png" alt="" />
+            </Cat>
+            <SandClock>
+                <img src="public/dlf.pt-sand-clock-png-764210.png" alt="" />
+            </SandClock>
+            <CatPaw>
+                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+            </CatPaw>
+            <CatPawOne>
+                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+            </CatPawOne>
+            <CatPawTwo>
+                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+            </CatPawTwo>
+            <CatPawThree>
+                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+            </CatPawThree>
+            <WholeToDoList>
+                <MainLabel>To do list</MainLabel>
+
+                <AddItem onAdd={addToDo} icon="+" placeholderInput="...треба записати, щоб не забути..." />
+
+                <Label>TO DO :</Label>
+
+                {toDoList.map((text) => {
+                    return (
+                        <ToDo onMove={completedToDo} toDoText={text} icon="✓"/>
+                    )
+                })}
+
+                <Label>COMPLETED :</Label>
+
+                {completedList.map((text) => {
+                    return (
+                        <Completed onDelete={deleteItem} complitedText={text}  icon="X"/>
+                    )
+                })}
+            </WholeToDoList>
         </HomePageStyled>
     )
 }
-
-// function HomePage2() {
-//     return (
-//         <p class="HomePageStyled">
-//             <h1 class="Label">Home Page</h1>
-//             <NewComponent />
-//         </p>
-//     )
-// }
 
 export default HomePage;
