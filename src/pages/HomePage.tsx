@@ -8,7 +8,7 @@ import Completed from '../components/Completed';
 
 const HomePageStyled = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     border: 7px solid #eb0bff;
     background-color: #f396fb;
     padding: 25px;
@@ -23,7 +23,6 @@ const HomePageStyled = styled.div`
 const WholeToDoList = styled.div`
     width: 500px;
     height: 100%;
-    min-height: 100vh;
     border: 3px solid #eb0bff;
     background-color: #f284fc;
     padding: 15px;
@@ -133,22 +132,22 @@ function HomePage() {
     return (
         <HomePageStyled>
             <Cat>
-                <img src="public/dlf.pt-cat-face-png-245887.png" alt="" />
+                <img src="/dlf.pt-cat-face-png-245887.png" alt="" />
             </Cat>
             <SandClock>
-                <img src="public/dlf.pt-sand-clock-png-764210.png" alt="" />
+                <img src="/dlf.pt-sand-clock-png-764210.png" alt="" />
             </SandClock>
             <CatPaw>
-                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+                <img src="/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
             </CatPaw>
             <CatPawOne>
-                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+                <img src="/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
             </CatPawOne>
             <CatPawTwo>
-                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+                <img src="/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
             </CatPawTwo>
             <CatPawThree>
-                <img src="public/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
+                <img src="/dlf.pt-cat-paw-print-png-4690468.png" alt="" />
             </CatPawThree>
             <WholeToDoList>
                 <MainLabel>To do list</MainLabel>

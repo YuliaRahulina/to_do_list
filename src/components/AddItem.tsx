@@ -47,7 +47,9 @@ function AddItem(props)  {
     };
 
     function createItem() {
+        // eslint-disable-next-line react/prop-types
         props.onAdd(text);
+        // @ts-ignore
         updateText('');
     }
 
